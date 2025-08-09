@@ -37,7 +37,7 @@ def append_usage_tsv(record: Dict[str, Any]) -> None:
     必填字段见 _TSV_HEADER_COLUMNS；缺失字段将按空字符串处理。
     """
     # 进入日志
-    logger.info(
+    logger.debug(
         f"[USAGE] 进入 append_usage_tsv: model={record.get('model')}, stream={record.get('is_stream')}, in={record.get('input_tokens', 0)}, out={record.get('output_tokens', 0)}"
     )
     try:
@@ -64,7 +64,7 @@ def append_usage_tsv(record: Dict[str, Any]) -> None:
                 f.write(line)
 
         # 成功日志
-        logger.info(
+        logger.debug(
             f"[USAGE] 写入统计成功: file={filepath}, model={record.get('model')}, request_id={record.get('request_id')}"
         )
     except Exception as e:

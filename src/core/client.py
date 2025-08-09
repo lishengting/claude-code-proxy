@@ -292,9 +292,9 @@ class OpenAIClient:
                 chunk_json = json.dumps(chunk_dict, ensure_ascii=False)
                 yield f"data: {chunk_json}"
             
-            # Signal end of stream
-            yield "data: [DONE]"
-            # 结束时记录成功日志与TSV
+            # [删除替换-原因] 原先先发送 [DONE] 再记录统计，消费者在看到 [DONE] 后会停止拉取，导致统计代码不执行。改为先记录统计再发送 [DONE]。
+            # yield "data: [DONE]"
+            # 结束时记录成功日志与TSV（先记录再发 [DONE]）
             input_tokens = (last_usage or {}).get("prompt_tokens", 0)
             output_tokens = (last_usage or {}).get("completion_tokens", 0)
             cache_read_input_tokens = 0
@@ -322,6 +322,8 @@ class OpenAIClient:
                     "error": "",
                 }
             )
+            # Signal end of stream（统计写入之后再发）
+            yield "data: [DONE]"
                 
         except AuthenticationError as e:
             logger.error(f"[FAIL] create_chat_completion_stream auth error: request_id={request_id}, err={e}")

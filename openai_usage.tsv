@@ -1,0 +1,5 @@
+timestamp	request_id	is_stream	model	base_url	api_type	input_tokens	output_tokens	cache_read_input_tokens	total_tokens	latency_ms	status	error
+2025-08-09T04:48:59.685899	549b59c2-f6af-4463-b5c1-d173e1365434	True	qwen3-coder-30b-a3b-instruct	https://dashscope.aliyuncs.com/compatible-mode/v1	openai	85	15	0	100	989	success	
+2025-08-09T04:49:01.011449	1bd99595-793a-4ea0-972d-5ceec64b751b	False	qwen3-coder-plus	https://dashscope.aliyuncs.com/compatible-mode/v1	openai	58531	16	0	58547	10184	success	
+2025-08-09T04:51:22.763810	d8b0bca1-5611-47cb-994b-dcfb00d744a1	True	qwen3-coder-30b-a3b-instruct	https://dashscope.aliyuncs.com/compatible-mode/v1	openai	85	15	0	100	1062	success	
+2025-08-09T04:51:22.773402	f63a5749-38b1-4842-a897-a448aba6a6c2	True	qwen3-coder-plus	https://dashscope.aliyuncs.com/compatible-mode/v1	openai	58564	8	0	58572	10216	success	
