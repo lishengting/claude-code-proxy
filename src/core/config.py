@@ -29,6 +29,10 @@ class Config:
         self.big_model = os.environ.get("BIG_MODEL", "gpt-4o")
         self.middle_model = os.environ.get("MIDDLE_MODEL", self.big_model)
         self.small_model = os.environ.get("SMALL_MODEL", "gpt-4o-mini")
+
+        # Usage stats settings
+        # 使用环境变量 USAGE_STATS_PATH 指定TSV统计文件路径，默认 ./openai_usage.tsv
+        self.usage_stats_path = os.environ.get("USAGE_STATS_PATH", "./openai_usage.tsv")
         
     def validate_api_key(self):
         """Basic API key validation"""
